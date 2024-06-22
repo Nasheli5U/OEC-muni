@@ -9,40 +9,31 @@ class Expediente extends Model
 {
     use HasFactory;
 
-    protected $table = 'expedientes';
-    protected $primaryKey = 'expediente_id';
+    protected $primaryKey = 'id'; // Define la clave primaria personalizada
 
     protected $fillable = [
-        'apellidos',
-        'nombres',
-        'nExpediente',
-        'fechaNot',
-        'estado',
-        'comprobante',
-        'imagen',
-        'precio',
+        'apellidos', 'nombres', 'dni_ruc', 'direccion_predio', 'domicilio', 
+        'procedencia', 'fecha', 'infraccion', 'monto', 'resolucion','numero_expediente', 'medida_complementaria'
     ];
-
-    public function usuario()
-    {
-        return $this->belongsTo(Usuario::class);
-    }
-
+    // Define la relación con los comprobantes de pago
     public function comprobantesDePago()
     {
         return $this->hasMany(ComprobanteDePago::class);
     }
 
+    // Define la relación con las resoluciones
     public function resoluciones()
     {
         return $this->hasMany(Resolucion::class);
     }
 
+    // Define la relación con los estados
     public function estados()
     {
         return $this->hasMany(Estado::class);
     }
 
+    // Define la relación con los reportes
     public function reportes()
     {
         return $this->hasMany(Reporte::class);

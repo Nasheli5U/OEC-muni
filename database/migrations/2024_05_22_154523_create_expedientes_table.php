@@ -12,18 +12,25 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('expedientes', function (Blueprint $table) {
-            $table->bigIncrements('expediente_id');
-            $table->string('apellidos', 255);
-            $table->string('nombres', 255);
-            $table->integer('nExpediente');
-            $table->date('fechaNot');
-            $table->string('estado', 255);
-            $table->text('comprobante')->nullable();
-            $table->string('imagen', 255)->nullable();
-            $table->decimal('precio', 8, 2);
+            $table->id('expediente_id');
+            $table->string('apellidos');
+            $table->string('nombres');
+            $table->string('dni_ruc');
+            $table->string('direccion_predio');
+            $table->string('domicilio');
+            $table->string('procedencia');
+            $table->date('fecha');
+            $table->string('infraccion');
+            $table->decimal('monto', 10, 2);
+            $table->string('resolucion')->nullable();
+            $table->string('medida_complementaria')->nullable();
+            $table->string('estado')->default('REC'); // Estado inicial
+            $table->string('numero_expediente')->unique();
             $table->timestamps();
         });
     }
+
+
 
     /**
      * Reverse the migrations.

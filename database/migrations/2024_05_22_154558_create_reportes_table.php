@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reportes', function (Blueprint $table) {
-            $table->bigIncrements('reporte_id');
+            $table->bigIncrements('id'); // Cambiado a 'id' por convención de Laravel
             $table->unsignedBigInteger('expediente_id');
             $table->bigInteger('tipo_reporte');
             $table->timestamps();
 
-            $table->foreign('expediente_id')->references('expediente_id')->on('expedientes')->onDelete('cascade');
+            $table->foreign('expediente_id')->references('id')->on('expedientes')->onDelete('cascade');
         });
     }
 

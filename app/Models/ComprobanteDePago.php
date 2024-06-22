@@ -9,19 +9,10 @@ class ComprobanteDePago extends Model
 {
     use HasFactory;
 
-    protected $table = 'comprobantes_de_pago';
-    protected $primaryKey = 'comprobante_id';
+    protected $primaryKey = 'id'; // Define la clave primaria personalizada
 
-    protected $fillable = [
-        'concepto',
-        'descripcion',
-        'nComprobante',
-        'monto',
-        'expediente_id',
-    ];
-
+    // Define la relación con el expediente
     public function expediente()
     {
         return $this->belongsTo(Expediente::class);
     }
-}

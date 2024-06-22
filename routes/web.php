@@ -1,28 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+use App\Http\Controllers\ExpedienteController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Rutas para CRUD de expedientes
+Route::resource('expedientes', ExpedienteController::class);
 
-Route::get('/test-db-connection', function () {
-    try {
-        DB::connection()->getPdo();
-        return "Connected successfully to the database.";
-    } catch (\Exception $e) {
-        return "Could not connect to the database. Error: " . $e->getMessage();
-    }
-});
+// Ruta para editar un expediente
+Route::get('/expedientes/{expediente}/edit', [ExpedienteController::class, 'edit'])->name('expedientes.edit');
+
+// Ruta para eliminar un expediente
+
+// Ruta para editar el estado de un expediente
+

@@ -7,16 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estado extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id'; // Define la clave primaria personalizada
 
-    protected $table = 'estados';
-    protected $primaryKey = 'estado_expediente_id';
-
-    protected $fillable = [
-        'expediente_id',
-        'estado',
-    ];
-
+    // Define la relación con el expediente
     public function expediente()
     {
         return $this->belongsTo(Expediente::class);

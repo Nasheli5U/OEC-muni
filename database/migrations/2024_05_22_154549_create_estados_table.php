@@ -12,12 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('estados', function (Blueprint $table) {
-            $table->bigIncrements('estado_expediente_id');
-            $table->unsignedBigInteger('expediente_id');
-            $table->string('estado', 255);
+            $table->id('estado_expediente_id');
+            $table->foreignId('expediente_id')->constrained('expedientes')->onDelete('cascade');
+            $table->string('estado');
             $table->timestamps();
-
-            $table->foreign('expediente_id')->references('expediente_id')->on('expedientes')->onDelete('cascade');
         });
     }
 
@@ -29,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('estados');
     }
 };
+

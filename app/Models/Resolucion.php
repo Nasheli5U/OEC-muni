@@ -7,16 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Resolucion extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id'; // Define la clave primaria personalizada
 
-    protected $table = 'resoluciones';
-    protected $primaryKey = 'resolucion_id';
-
-    protected $fillable = [
-        'expediente_id',
-        'tipo_expediente',
-    ];
-
+    // Define la relación con el expediente
     public function expediente()
     {
         return $this->belongsTo(Expediente::class);

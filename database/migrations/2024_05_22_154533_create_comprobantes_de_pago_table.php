@@ -12,15 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comprobantes_de_pago', function (Blueprint $table) {
-            $table->bigIncrements('comprobante_id');
+            $table->bigIncrements('id'); // Cambiado a 'id' por convención de Laravel
             $table->string('concepto', 255);
             $table->string('descripcion', 255)->nullable();
             $table->string('nComprobante', 255);
             $table->decimal('monto', 8, 2);
             $table->unsignedBigInteger('expediente_id');
             $table->timestamps();
-
-            $table->foreign('expediente_id')->references('expediente_id')->on('expedientes')->onDelete('cascade');
+            $table->foreign('expediente_id')->references('id')->on('expedientes')->onDelete('cascade');
         });
     }
 

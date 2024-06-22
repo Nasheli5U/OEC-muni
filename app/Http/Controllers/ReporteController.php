@@ -37,4 +37,5 @@ class ReporteController extends Controller
         Reporte::destroy($id);
         return response()->json(null, 204);
     }
+    
 }

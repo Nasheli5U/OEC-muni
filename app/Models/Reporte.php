@@ -9,16 +9,10 @@ class Reporte extends Model
 {
     use HasFactory;
 
-    protected $table = 'reportes';
-    protected $primaryKey = 'reporte_id';
+    protected $primaryKey = 'id'; // Define la clave primaria personalizada
 
-    protected $fillable = [
-        'expediente_id',
-        'tipo_reporte',
-    ];
-
+    // Define la relación con el expediente
     public function expediente()
     {
         return $this->belongsTo(Expediente::class);
     }
-}
